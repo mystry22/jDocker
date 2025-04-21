@@ -12,6 +12,6 @@ public class SampleWebController {
 
     @GetMapping("/home")
     public ResponseEntity<?> returnResponse(){
-        return new ResponseEntity<>("Hello docker", HttpStatus.OK);
+        return new ResponseEntity<>("Hello docker nawao", HttpStatus.OK);
     }
 }
