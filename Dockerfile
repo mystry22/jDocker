@@ -1,5 +1,5 @@
 
-FROM amazoncorretto:22
+FROM eclipse-temurin:21-jdk-alpine
 LABEL maintainer = "henry OLUWATOBI"
 EXPOSE 8080
 WORKDIR /app

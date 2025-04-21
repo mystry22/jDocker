@@ -13,8 +13,8 @@ jobs:
       - name: Setup java
         uses: actions/setup-java@v4
         with:
-          distribution: 'amazoncorretto'
-          java-version: '22'
+          distribution: 'temurin'
+          java-version: '21'
       - name: Build Project
         run: mvn clean install -DskipTests
       - name: Login to docker hub
