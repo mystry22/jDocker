@@ -20,9 +20,9 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build docker image
-        run: docker build -t testjavadocker .
+        run: docker build -t mystry22/testjavadocker .
       - name: Publish image to docker hub
-        run: docker push testjavadocker:latest
+        run: docker push mystry22/testjavadocker:latest
 
 
   deploy:
@@ -30,9 +30,9 @@ jobs:
     runs-on: [self-hosted]
     steps:
       - name: pull docker image
-        run: docker pull testjavadocker:latest
+        run: docker pull mystry22/testjavadocker:latest
       - name: Delete old containers
         run: docker rm -f spring-app
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name spring-app testjavadocker
+        run: docker run -d -p 8080:8080 --name spring-app mystry22/testjavadocker
 
