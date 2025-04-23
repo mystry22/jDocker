@@ -25,12 +25,22 @@ jobs:
         run: docker push mystry22/testjavadocker:latest
 
 
+
+
+
+
   deploy:
     needs: build
     runs-on: [aws-ec2]
     steps:
+      - name: Check Docker installation
+        run: |
+          if ! [ -x "$(command -v docker)" ]; then
+            echo "Error: Docker is not installed." >&2
+            exit 1
+          fi
       - name: pull docker image
-        run: docker pull mystry22/testjavadocker:latest
+        run: sudo docker pull mystry22/testjavadocker:latest
       - name: Delete old containers
         run: docker rm -f spring-app
       - name: Run docker container
