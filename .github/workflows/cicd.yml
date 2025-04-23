@@ -42,7 +42,10 @@ jobs:
       - name: pull docker image
         run: sudo docker pull mystry22/testjavadocker:latest
       - name: Delete old containers
-        run: docker rm -f spring-app
+        run: |
+          if [ "$(sudo docker ps -aq -f name=spring-app)" ]; then
+            sudo docker rm -f demo
+          fi
       - name: Run docker container
         run: docker run -d -p 8080:8080 --name spring-app mystry22/testjavadocker
 
